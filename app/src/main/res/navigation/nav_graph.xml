@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainStartFragment">
+
+    <fragment
+        android:id="@+id/mainStartFragment"
+        android:name="cc.kaipao.dongjia.jetpack.ui.main.MainStartFragment"
+        android:label="main_start_fragment"
+        tools:layout="@layout/main_start_fragment" >
+        <action
+            android:id="@+id/action_mainStartFragment_to_mainEndFragment"
+            app:destination="@id/mainEndFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_mainStartFragment_to_second_nav"
+            app:destination="@id/second_nav"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/mainEndFragment"
+        android:name="cc.kaipao.dongjia.jetpack.ui.main.MainEndFragment"
+        android:label="main_end_fragment"
+        tools:layout="@layout/main_end_fragment" />
+
+
+    <navigation
+        android:id="@+id/second_nav"
+        app:startDestination="@id/secondActivity">
+
+
+        <activity
+            android:id="@+id/secondActivity"
+            android:name="cc.kaipao.dongjia.jetpack.SecondActivity"
+            android:label="second_activity"
+            tools:layout="@layout/second_activity" />
+    </navigation>
+</navigation>

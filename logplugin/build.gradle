@@ -1,0 +1,51 @@
+apply plugin: "groovy"
+apply plugin: 'maven-publish'
+
+
+dependencies {
+
+    implementation localGroovy()
+    implementation gradleApi()
+    implementation "com.android.tools.build:gradle:3.2.1"
+    implementation "commons-io:commons-io:2.5"
+
+}
+
+
+
+
+//group = 'cc.kaipao.plugin.log'
+//version = '1.0'
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'cc.kaipao.plugin.log'
+            artifactId = 'logplugin'
+            version = '1.0'
+
+            from components.java
+            artifact sourcesJar
+        }
+    }
+
+    repositories {
+        maven {
+            //指定要上传的maven私服仓库
+            url = "http://172.16.254.190:8081/repository/maven-releases/"
+            //认证用户和密码
+            credentials {
+                username "xubo"
+                password "idongjia"
+            }
+        }
+
+    }
+}
+
